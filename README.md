@@ -4,20 +4,6 @@ Sistema moderno e responsivo de **Controle de Acesso Biométrico Facial em Tempo
 
 ---
 
-## 📌 Sumário
-
-- [Visão Geral](#-visão-geral)
-- [Funcionalidades e Recursos](#-funcionalidades-e-recursos)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Arquitetura do Projeto](#-arquitetura-do-projeto)
-- [Pré-requisitos e Configuração do Banco (Supabase)](#-pré-requisitos-e-configuração-do-banco-supabase)
-- [Como Executar o Projeto](#-como-executar-o-projeto)
-- [Como Usar](#-como-usar)
-- [Estrutura de Arquivos](#-estrutura-de-arquivos)
-- [Licença](#-licença)
-
----
-
 ## Visão Geral
 
 O **SENAI Cam Access** transforma qualquer webcam em um ponto inteligente de checagem de acesso. Utilizando modelos treinados da biblioteca `face-api.js`, o sistema identifica e reconhece usuários em fração de segundos, comparando a estrutura vetorial (*descriptors*) da face capturada com os registros mantidos no banco de dados **Supabase**.
@@ -136,11 +122,14 @@ senai-cam-access/
 
 ---
 
-## 📝 Licença
+#Desenvolvido pelo Squad Phoenix Dev's 
+#Isabella, Kemmily, Felipe Jacques e Lorena
+LinkedIn - Isabella Rosa
+-Kemmilly de Sousa Carvalho
+-Lorena  Fontana Souza 
+-Felipe Jacques
 
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
----
 
 <p align="center">
   Desenvolvido para fins educacionais e de controle de acesso — <b>SENAI</b>
