@@ -1,0 +1,430 @@
+/* --- Variáveis de Design Refinadas --- */
+:root {
+  --primary-red: #e30613;    /* Vermelho SENAI Puro */
+  --dark-red: #8f0006;       /* Para hover e detalhes escuros */
+  --bg-color: #0d0d0f;       /* Fundo quase preto */
+  --card-bg: #18181b;        /* Cartões cinza escuro */
+  --border-color: #2a2a2e;   /* Bordas sutis */
+  --text-primary: #ffffff;   
+  --text-secondary: #a1a1aa; 
+  --success-green: #10b981;  /* Verde moderno */
+  --warning-yellow: #f59e0b; /* Amarelo moderno */
+  
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --transition: all 0.2s ease-in-out;
+}
+
+/* --- Reset e Tipografia --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Header --- */
+.header {
+  background-color: var(--card-bg);
+  border-bottom: 2px solid var(--primary-red);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(227, 6, 19, 0.15);
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo i {
+  color: var(--primary-red);
+}
+
+.logo span {
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.status-badge {
+  background: rgba(227, 6, 19, 0.1);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+/* --- Container Principal --- */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 50px 20px;
+  flex-wrap: wrap;
+}
+
+/* --- Cartões Genéricos --- */
+.camera-card, .info-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 0; /* padding interno ajustado nas sub-divs */
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.camera-card:hover, .info-card:hover {
+  border-color: rgba(227, 6, 19, 0.4);
+}
+
+.card-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-header h2 i {
+  color: var(--primary-red);
+}
+
+/* --- Área da Câmera --- */
+.camera-card {
+  width: 682px; /* 640 + padding */
+}
+
+.video-wrapper {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  background: #000;
+  overflow: hidden;
+  margin: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+#webcam, #overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+}
+
+#overlay {
+  z-index: 5;
+}
+
+/* Estética do Scanner (Cantos que piscam) */
+.scanner-focus {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--text-secondary);
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.top-left { top: 0; left: 0; border-right: none; border-bottom: none; }
+.top-right { top: 0; right: 0; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 0; left: 0; border-right: none; border-top: none; }
+.bottom-right { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+/* Animação ativa quando o rosto for reconhecido */
+.scanner-focus.active .corner {
+  border-color: var(--primary-red);
+  opacity: 1;
+  width: 30px; /* encosta um pouco */
+  height: 30px;
+  animation: pulseScanner 1.5s infinite;
+}
+
+@keyframes pulseScanner {
+  0% { box-shadow: 0 0 0 0px rgba(227, 6, 19, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(227, 6, 19, 0); }
+  100% { box-shadow: 0 0 0 0px rgba(227, 6, 19, 0); }
+}
+
+.instructions {
+  padding: 0 25px 20px 25px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* --- Área de Informações/Resultado --- */
+.info-card {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  text-align: center;
+  margin: 20px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  border: 2px dashed var(--border-color);
+  transition: var(--transition);
+}
+
+.user-avatar {
+  font-size: 50px;
+  color: var(--text-secondary);
+  width: 90px;
+  height: 90px;
+  background: var(--bg-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 3px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.user-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.user-info {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Estados do Result Box */
+.result-box.liberado {
+  border-color: var(--success-green);
+  background: rgba(16, 185, 129, 0.05);
+}
+.result-box.liberado .user-avatar {
+  color: var(--success-green);
+  border-color: var(--success-green);
+  background: rgba(16, 185, 129, 0.1);
+  animation: growIn 0.3s ease;
+}
+
+.result-box.negado {
+  border-color: var(--primary-red);
+  background: rgba(227, 6, 19, 0.05);
+}
+.result-box.negado .user-avatar {
+  color: var(--primary-red);
+  border-color: var(--primary-red);
+  background: rgba(227, 6, 19, 0.1);
+}
+.result-box.negado .aluno-nome { color: var(--primary-red); }
+
+@keyframes growIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Botões --- */
+.actions {
+  padding: 0 20px 20px 20px;
+}
+
+.btn-primary, .btn-success {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary-red);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--dark-red);
+  transform: translateY(-2px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* --- MODAL DE CADASTRO (A parte bonita) --- */
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro */
+  backdrop-filter: blur(5px); /* Efeito blur */
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  margin: 10% auto;
+  width: 450px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.7);
+  animation: slideIn 0.3s;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.modal-header h3 i { color: var(--primary-red); }
+
+.close-modal {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 28px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.close-modal:hover { color: var(--primary-red); }
+
+.modal-body {
+  padding: 25px;
+}
+
+.cadastro-info {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-red);
+  opacity: 0.7;
+}
+
+.input-icon input {
+  width: 100%;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px 12px 12px 45px;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.input-icon input:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.2);
+}
+
+.modal-footer {
+  padding: 15px 25px 25px 25px;
+}
+
+.btn-success {
+  background: var(--success-green);
+  color: white;
+}
+.btn-success:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+.btn-success:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animações do Modal */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

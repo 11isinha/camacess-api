@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENAI Cam Access - Controle por Face ID</title>
+    <!-- Link para ícones FontAwesome para deixar mais visual -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Face-API.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-id-card"></i> SENAI <span>Cam Access</span>
+        </div>
+        <div class="status-badge" id="system-status">
+            <i class="fas fa-spinner fa-spin"></i> SISTEMA INICIALIZANDO...
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Container da Câmera -->
+        <section class="camera-card">
+            <div class="card-header">
+                <h2><i class="fas fa-video"></i> Monitoramento em Tempo Real</h2>
+            </div>
+            <div class="video-wrapper">
+                <!-- Feed da Câmera -->
+                <video id="webcam" autoplay playsinline muted width="640" height="480"></video>
+                <!-- Canvas para marcações da IA -->
+                <canvas id="overlay"></canvas>
+                
+                <!-- Overlay de cantos para guiar o usuário -->
+                <div class="scanner-focus">
+                    <div class="corner top-left"></div>
+                    <div class="corner top-right"></div>
+                    <div class="corner bottom-left"></div>
+                    <div class="corner bottom-right"></div>
+                </div>
+            </div>
+            <div class="instructions">
+                <i class="fas fa-info-circle"></i> Posicione seu rosto centralizado dentro do marcador.
+            </div>
+        </section>
+
+        <!-- Container de Resultados e Ações -->
+        <section class="info-card">
+            <div class="card-header">
+                <h2><i class="fas fa-user-check"></i> Status do Acesso</h2>
+            </div>
+            
+            <div id="result-box" class="result-box standby">
+                <div class="user-avatar" id="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div id="aluno-nome" class="user-name">Aguardando...</div>
+                <div id="aluno-mat" class="user-info">--</div>
+                <div id="aluno-cargo" class="user-info">--</div>
+            </div>
+
+            <div class="actions">
+                <button id="btn-cadastrar" class="btn-primary">
+                    <i class="fas fa-user-plus"></i> Cadastrar Novo Usuário
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL DE CADASTRO (A parte mais bonita para cadastrar) -->
+    <div id="modal-cadastro" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-plus"></i> Novo Cadastro Facial</h3>
+                <button class="close-modal" id="btn-fechar-modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <p class="cadastro-info">Preencha os dados abaixo para vincular à biometria facial capturada.</p>
+                
+                <div class="form-group">
+                    <label for="cad-nome">Nome Completo</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="cad-nome" placeholder="Ex: João Silva">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cad-matricula">Número da Matrícula</label>
+                    <div class="input-icon">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="cad-matricula" placeholder="Ex: 123456">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cad-curso">Curso / Cargo</label>
+                    <div class="input-icon">
+                        <i class="fas fa-briefcase"></i>
+                        <input type="text" id="cad-curso" placeholder="Ex: Técnico em TI">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="btn-confirmar-cadastro" class="btn-success">
+                    <i class="fas fa-check-circle"></i> Finalizar Cadastro
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
