@@ -122,12 +122,13 @@ senai-cam-access/
 
 ---
 
-# Desenvolvido pelo Squad Phoenix Dev's 
-# Isabella, Kemmily, Felipe Jacques e Lorena
-# LinkedIn - Isabella Rosa
-# -Kemmilly de Sousa Carvalho
-# -Lorena  Fontana Souza 
-# -Felipe Jacques
+## Desenvolvido pelo Squad Phoenix Dev's 
+### Isabella, Kemmily, Felipe Jacques e Lorena
+### LinkedIn 
+### - Isabella Rosa
+### -Kemmilly de Sousa Carvalho
+### -Lorena  Fontana Souza 
+### -Felipe Jacques
 
 
 
