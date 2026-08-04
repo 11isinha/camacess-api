@@ -1,11 +1,5 @@
  🛡️ SENAI Cam Access - Controle de Acesso Facial
 
-![SENAI Cam Access Banner](https://img.shields.gradient.is/senai-cam-access?bg=e30613&tc=ffffff&style=for-the-badge)
-![Status](https://img.shields.io/badge/STATUS-ATIVO-success?style=for-the-badge)
-![License](https://img.shields.io/badge/LICENÇA-MIT-blue?style=for-the-badge)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
-![Supabase](https://img.shields.io/badge/Supabase-Database-emerald?style=for-the-badge&logo=supabase)
-
 Sistema moderno e responsivo de **Controle de Acesso Biométrico Facial em Tempo Real** desenvolvido para instituições de ensino e empresas (com identidade visual alinhada ao **SENAI**). O sistema realiza a captura do feed de vídeo, processamento dos descritores faciais via Inteligência Artificial e consulta/armazenamento de cadastros em nuvem através do **Supabase**.
 
 ---
