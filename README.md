@@ -18,7 +18,7 @@ Sistema moderno e responsivo de **Controle de Acesso Biométrico Facial em Tempo
 
 ---
 
-## 👁️ Visão Geral
+## Visão Geral
 
 O **SENAI Cam Access** transforma qualquer webcam em um ponto inteligente de checagem de acesso. Utilizando modelos treinados da biblioteca `face-api.js`, o sistema identifica e reconhece usuários em fração de segundos, comparando a estrutura vetorial (*descriptors*) da face capturada com os registros mantidos no banco de dados **Supabase**.
 
@@ -26,7 +26,7 @@ A interface foi projetada com foco em **UX/UI**, trazendo o **vermelho SENAI (#e
 
 ---
 
-## ✨ Funcionalidades e Recursos
+## Funcionalidades e Recursos
 
 - 🎥 **Monitoramento em Tempo Real**: Captura o feed da webcam com detecção contínua de rostos (300ms loop).
 - 🧠 **Reconhecimento Facial Inteligente (IA)**: Utiliza redes neurais convolucionais para extrair descritores faciais de 128 pontos.
@@ -38,7 +38,7 @@ A interface foi projetada com foco em **UX/UI**, trazendo o **vermelho SENAI (#e
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Front-end
 - **HTML5 & CSS3**: Estruturação semântica com layout responsivo e variáveis CSS.
@@ -78,7 +78,7 @@ CREATE TABLE usuarios (
 
 ---
 
-## 📦 Como Executar o Projeto
+## Como Executar o Projeto
 
 Como o projeto é construído totalmente em **HTML/CSS/JS Client-Side**, não é necessário instalar dependências no Node.js.
 
