@@ -1,6 +1,6 @@
 // 1. Configurações do Supabase (MANTIDAS)
-const SUPABASE_URL = 'https://lpukwrixlmtvbeezefxd.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_lIsbRrEkZ3OalQwh-MIcYQ_5OfVHFHp';
+const SUPABASE_URL = ' ';
+const SUPABASE_KEY = ' ';
 const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const video = document.getElementById('webcam');
